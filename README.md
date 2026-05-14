@@ -1,39 +1,41 @@
 # UART REAL-TIME USING PYTHON + FPGA
 
-Real-time UART communication system using Verilog on the Basys3 FPGA board with live Python/Jupyter monitoring.
+Real-time UART communication between Basys3 FPGA and Python using Verilog and Jupyter Notebook.
 
 ---
 
 ## Features
 
-- UART Transmitter and Receiver using Verilog
-- Real-time FPGA ↔ Python communication
-- Live HEX + ASCII logging
-- 7-Segment display visualization
-- FPGA memory buffering
-- UART data monitoring using Jupyter Notebook
+- UART Transmitter and Receiver
+- FPGA ↔ Python communication
+- Live HEX and ASCII monitoring
+- 7-Segment display output
+- UART data logging
 - USB-UART communication
-- Switch-controlled UART input
+- Switch-based UART transmission
 
 ---
 
-## Hardware
+## Hardware Used
 
 - Basys3 FPGA Board
-- USB-UART Interface
-- Onboard switches/buttons
-- 7-segment display
+- USB-UART
+- Onboard switches
+- Buttons
 - LEDs
+- 7-Segment Display
 
 ---
 
-## Software
+## Software Used
 
-- Vivado Design Suite
+- Vivado
 - Verilog HDL
 - Python 3
 - Jupyter Notebook
 - PySerial
+
+---
 
 ## UART Configuration
 
@@ -44,54 +46,38 @@ Real-time UART communication system using Verilog on the Basys3 FPGA board with 
 | Data Bits | 8 |
 | Stop Bits | 1 |
 | Parity | None |
-| UART Format | 8N1 |
 
 ---
 
-## System Architecture
+## System Flow
 
 ```text
-Switches
-   ↓
+FPGA Switches
+      ↓
 UART Transmitter
-   ↓
+      ↓
 USB UART
-   ↓
+      ↓
 Python / Jupyter Notebook
-   ↓
-HEX + ASCII Logging
+      ↓
+HEX + ASCII Display
 ```
 
 ---
 
-## FPGA Workflow
+## Working
 
-### 1. Generate Bitstream
-
-
-### 2. Program FPGA
-
-Open Hardware Manager and program the Basys3 FPGA board.
-
----
-
-### 3. Give Input
-
-- Set switch values
-- Press TX button
-- UART transmits switch data
-
-
-
-### 4. Real-Time UART Transmission
-
-FPGA transmits UART bytes through onboard USB-UART.
+1. Set switch values on FPGA  
+2. Press transmit button  
+3. FPGA sends UART data  
+4. Python receives and displays HEX + ASCII values  
+5. Data can also be stored in `.hex` files  
 
 ---
 
 ## Python Setup
 
-Install dependencies:
+Install PySerial:
 
 ```bash
 pip install pyserial
@@ -105,43 +91,28 @@ jupyter notebook
 
 ---
 
-
-## FPGA Memory Buffer
-
-Incoming UART bytes are stored in FPGA memory.
-
-
-## 7-Segment Display
-
-Latest UART byte is displayed in hexadecimal format.
-
-
 ## Files
 
 | File | Description |
 |---|---|
-| `top_module.v` | Main UART top module |
+| `top_module.v` | Top module |
 | `transmittor.v` | UART transmitter |
 | `receiver.v` | UART receiver |
-| `baud_rate_generator.v` | Baud rate generator |
-| `newdebounce.v` | Debounce logic |
-| `seven_segment_display.v` | 7-segment display driver |
-| `uart_realtime.ipynb` | Python UART notebook |
+| `baud_rate_gen.v` | Baud generator |
+| `debounce_file.v` | Debounce logic |
+| `display_unit.v` | Display module |
+| `seg7_display.v` | 7-segment display |
+| `FPGA_UART_conversion.py` | Python UART monitor |
 
 ---
 
-## Learning Outcomes
+## Output
 
-This project demonstrates:
-
-- FPGA digital design
-- UART protocol implementation
-- FSM design
-- Hardware/software integration
-- Real-time FPGA debugging
-- UART communication
-- Memory buffering
-- Python-FPGA interfacing
+- Live UART communication
+- HEX data display
+- ASCII monitoring
+- FPGA to Python data transfer
+- Real-time UART debugging
 
 ---
 
